@@ -3,11 +3,10 @@ const username = document.getElementById('username');
 const password= document.getElementById('password');
 const password2= document.getElementById('password2');
 
-//Show input error
+//Show input error message
 function showError(input, message){
     const formControl = input.parentElement;
     formControl.className =  "form-control error" // agregando las clases 
-   
     const small =  formControl.querySelector("small");
     small.innerText = message;
 
@@ -23,14 +22,18 @@ function checkEmail(input){
 }
 
 //Check password matc
-function checkPasswordMatch(input1, input2){
-if (input1.value !== input2.value){
-    showError(input2, "password do not match");
+function checkPasswordsMatch(input1, input2) {
+    if (input1.value !== input2.value) {
+      showError(input2, 'Passwords do not match');
+    }
+  }
+
+
+// function checkPasswordsMatch(input1, input2){
+// if (input1.value !== input2.value){
+//     showError(input2, "password do not match");
     
-}  else {
-
-
-}}
+// } }
 
 
 //show Success online
@@ -43,9 +46,11 @@ function showSuccess(input){
 //usarmos forEach para iterar en el array sin tener que usar un bucle 
 function checkRequired(inputArr){
     inputArr.forEach(function(input) {
-        if ( input.value.trim() === ""){
+        if ( input.value.trim() === ''){
             showError(input, `${getFieldName(input)} is required`);
             //`${getFieldName(input)} is required`) impremi el mensaje pero estamos pasando una funcion para hacer la primera letra mayuscula 
+        } else{
+            showSuccess(input)
         }
     });
 }
@@ -80,12 +85,12 @@ form.addEventListener('submit', function(e) {
     checkLenght(username, 3, 15);
     checkLenght(password, 6, 25);
     checkEmail(email)
-    checkPasswordMatch(password, password2);
+    checkPasswordsMatch(password, password2);
 
 } )
 
 
-
+alert(message);
 
 
 
