@@ -28,8 +28,7 @@ if (input1.value !== input2.value){
     showError(input2, "password do not match");
     
 }  else {
-    showSuccess(input2, input1);
-    // showSuccess(input1);
+
 
 }}
 
